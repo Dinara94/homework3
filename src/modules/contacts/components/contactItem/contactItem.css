@@ -1,0 +1,46 @@
+.contactRow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 15px 20px;
+    border: 1px solid #e5e5e5;
+    font-size: 14px;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.contactRow:hover {
+    background-color: #e5e5e5;
+    transition: 0.5s;
+}
+
+.name,
+.surname {
+    font-weight: 600;
+}
+
+.buttons {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+}
+
+.button {
+    outline: none;
+    border: 0 none;
+    appearance: none;
+    cursor: pointer;
+    display: block;
+    padding: 15px 10px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #e97fab;
+    color: #fff;
+    font-size: 12px;
+    box-shadow: 0 3px 2px #d8d8d8;
+}
+
+.delete {
+    background-color: #6e1439;
+    margin-bottom: 20px;
+}
+
