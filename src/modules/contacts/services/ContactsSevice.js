@@ -15,17 +15,17 @@ export function updateList(newItem) {
 }
 
 export function deleteItem(id) {
-   return fetch(URL + id, {
+  return fetch(URL + id, {
     method: "DELETE",
   }).then((res) => res.json());
 }
 
 export function createContact(newItem) {
-    return fetch(URL, {
-        method: 'POST',
-        body: JSON.stringify(newItem),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    }).then((res) => res.json());
+  return fetch(URL, {
+    method: "POST",
+    body: JSON.stringify(newItem),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
 }

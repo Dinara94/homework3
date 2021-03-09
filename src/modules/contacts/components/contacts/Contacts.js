@@ -10,7 +10,7 @@ import ContactForm from "../contactForm/ContactForm";
 export default class Contacts extends Component {
   state = {
     list: [],
-    popupMode: true,
+    popupMode: false,
   };
 
   componentDidMount() {
@@ -18,23 +18,6 @@ export default class Contacts extends Component {
         this.setState({ list });
       });
   }
-
-/*   editContact = (id) => {
-    const item = this.state.list.find((i) => i.id);
-    const newItem = { ...item, name: "Kate" };
-
-    fetch(URL + id, {
-      method: "PUT",
-      body: JSON.stringify(newItem),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(() => {
-      this.setState({
-        list: this.state.list.map((item) => (item.id !== id ? item : newItem)),
-      });
-    });
-  }; */
 
   deleteContact = (id) => {
     deleteItem(id);
@@ -54,6 +37,10 @@ export default class Contacts extends Component {
     this.setState({ popupMode: true });
   };
 
+  closePopup = () => {
+    this.setState({ popupMode: false });
+  };
+
   render() {
     return (
       <>
@@ -61,10 +48,9 @@ export default class Contacts extends Component {
           list={this.state.list}
           popup={this.state.showPopup}
           onDelete={this.deleteContact}
-          onEdit={this.editContact}
           showPopup={this.showPopup}
         />
-        {this.state.popupMode && <ContactForm onSave={this.createItem}/>}
+        {this.state.popupMode && <ContactForm onSave={this.createItem} closePopup={this.closePopup}/>}
       </>
     );
   }

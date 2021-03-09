@@ -13,15 +13,19 @@ export default class ContactForm extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     this.props.onSave(this.state.contact);
-    this.setState({ contact: {
-      name: "",
-      surname: "",
-      phone: "",
-    }})
+    this.setState({
+      contact: {
+        name: "",
+        surname: "",
+        phone: "",
+      },
+    });
+    this.props.closePopup();
   };
 
   editContact = (e) => {
-    this.setState({ contact: {...this.state.contact, [e.target.name] : e.target.value,}
+    this.setState({
+      contact: { ...this.state.contact, [e.target.name]: e.target.value },
     });
   };
 
@@ -51,8 +55,12 @@ export default class ContactForm extends Component {
             onChange={this.editContact}
           />
           <div className="options">
-            <button className="option save">Save</button>
-            <button className="option cancel">Cancel</button>
+            <button className="option save" onClick={this.onFormSubmit}>
+              Save
+            </button>
+            <button className="option cancel" onClick={this.props.closePopup}>
+              Cancel
+            </button>
           </div>
         </form>
       </div>

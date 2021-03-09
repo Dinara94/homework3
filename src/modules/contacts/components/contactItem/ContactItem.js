@@ -2,18 +2,13 @@ import React, { Component } from "react";
 import "./contactItem.css";
 
 export default class ContactItem extends Component {
-    delButtonClick = (e) => {
-        e.stopPropagation();
-        this.props.onDelete(this.props.item.id);
-    }
-
-    editButtonClick = (e) => {
-        e.stopPropagation();
-        this.props.onEdit(this.props.item.id);
-    }
+  delButtonClick = (e) => {
+    e.stopPropagation();
+    this.props.onDelete(this.props.item.id);
+  };
 
   render() {
-      const { item } = this.props;
+    const { item } = this.props;
 
     return (
       <li className="contactRow">
@@ -21,8 +16,9 @@ export default class ContactItem extends Component {
         <div className="surname">{item.surname}</div>
         <div className="phone">{item.phone}</div>
         <div className="buttons">
-            <button className="button delete" onClick={this.delButtonClick}>Delete</button>
-            <button className="button edit" onClick={this.editButtonClick}>Edit</button>
+          <button className="button delete" onClick={this.delButtonClick}>
+            Delete
+          </button>
         </div>
       </li>
     );
