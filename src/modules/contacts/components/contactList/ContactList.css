@@ -1,3 +1,9 @@
+.listContainer {
+    width: 100vw;
+    height: 100vh;
+}
+
+
 .title {
     text-align: center;
     margin: 50px auto;
@@ -19,8 +25,6 @@
     padding: 15px 10px;
     text-align: center;
     border-radius: 10px;
-    background-color: #4fbeb5;
-    color: #fff;
     font-size: 12px;
     box-shadow: 0 3px 2px #d8d8d8;
 }

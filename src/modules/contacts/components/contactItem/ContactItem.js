@@ -1,26 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
+
+import {
+  neonText,
+  neonButton,
+  lightText,
+  lightButton,
+} from "../../services/Styles";
+
 import "./contactItem.css";
 
-export default class ContactItem extends Component {
-  delButtonClick = (e) => {
+export default function ContactItem({item, onDelete, colorMode}) {
+  const delButtonClick = (e) => {
     e.stopPropagation();
-    this.props.onDelete(this.props.item.id);
+    onDelete(item.id);
   };
 
-  render() {
-    const { item } = this.props;
-
     return (
-      <li className="contactRow">
-        <div className="name">{item.name}</div>
-        <div className="surname">{item.surname}</div>
-        <div className="phone">{item.phone}</div>
+      <li className="contactRow" style={colorMode === "light" ? lightText() : neonText()}>
+        <div className="name" style={colorMode === "light" ? lightText() : neonText()}>{item.name}</div>
+        <div className="surname" style={colorMode === "light" ? lightText() : neonText()}>{item.surname}</div>
+        <div className="phone" style={colorMode === "light" ? lightText() : neonText()}>{item.phone}</div>
         <div className="buttons">
-          <button className="button delete" onClick={this.delButtonClick}>
+          <button className="button delete" style={colorMode === "light" ? lightButton() : neonButton()} onClick={delButtonClick}>
             Delete
           </button>
         </div>
       </li>
     );
-  }
 }

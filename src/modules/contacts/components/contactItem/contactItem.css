@@ -5,12 +5,6 @@
     border: 1px solid #e5e5e5;
     font-size: 14px;
     align-items: center;
-    transition: 0.5s;
-}
-
-.contactRow:hover {
-    background-color: #e5e5e5;
-    transition: 0.5s;
 }
 
 .name,
@@ -33,14 +27,11 @@
     padding: 15px 10px;
     text-align: center;
     border-radius: 10px;
-    background-color: #e97fab;
-    color: #fff;
     font-size: 12px;
     box-shadow: 0 3px 2px #d8d8d8;
 }
 
 .delete {
-    background-color: #6e1439;
     margin-bottom: 20px;
 }
 

@@ -1,57 +1,63 @@
-import { getData } from "../../services/ContactsSevice";
-import { createContact } from "../../services/ContactsSevice";
-import { deleteItem } from "../../services/ContactsSevice";
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+
+import {
+  getData,
+  createContact,
+  deleteItem,
+} from "../../services/ContactsSevice";
+
+import ThemeFilter from "../themeFilter/ThemeFilter";
 import ContactList from "../contactList/ContactList";
 import ContactForm from "../contactForm/ContactForm";
 
+export default function Contacts() {
+  const [list, setList] = useState([]);
+  const [popupMode, setPopupMode] = useState(false);
+  const [colorMode, setcolorMode] = useState("light");
 
 
-export default class Contacts extends Component {
-  state = {
-    list: [],
-    popupMode: false,
+  useEffect(() => {
+    getData().then((list) => setList(list));
+  }, [list]);
+
+  const deleteContact = (id) => {
+    deleteItem(id);
+    setList(list.filter((item) => item.id !== id));
   };
 
-  componentDidMount() {
-    getData().then((list) => {
-        this.setState({ list });
-      });
-  }
-
-  deleteContact = (id) => {
-    deleteItem(id);
-
-    this.setState({
-      list: this.state.list.filter((item) => item.id !== id),
+  const createItem = (newItem) => {
+    createContact(newItem).then((data) => {
+      setList([...list, data]);
     });
   };
 
-  createItem = (newItem) => {
-    createContact(newItem).then((data) => (
-      this.setState({list: [...this.state.list, data] })
-    ));
+  const showPopup = () => {
+    setPopupMode(true);
   };
 
-  showPopup = () => {
-    this.setState({ popupMode: true });
+  const closePopup = () => {
+    setPopupMode(false);
   };
 
-  closePopup = () => {
-    this.setState({ popupMode: false });
-  };
-
-  render() {
-    return (
-      <>
-        <ContactList
-          list={this.state.list}
-          popup={this.state.showPopup}
-          onDelete={this.deleteContact}
-          showPopup={this.showPopup}
+  return (
+    <>
+      <ThemeFilter
+        colorMode={colorMode}
+        setcolorMode={setcolorMode}
+      />
+      <ContactList
+        list={list}
+        onDelete={deleteContact}
+        showPopup={showPopup}
+        colorMode={colorMode}
+      />
+      {popupMode && (
+        <ContactForm
+          onSave={createItem}
+          closePopup={closePopup}
+          colorMode={colorMode}
         />
-        {this.state.popupMode && <ContactForm onSave={this.createItem} closePopup={this.closePopup}/>}
-      </>
-    );
-  }
+      )}
+    </>
+  );
 }
