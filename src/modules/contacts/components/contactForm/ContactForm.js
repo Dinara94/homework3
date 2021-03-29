@@ -9,7 +9,7 @@ import {
 
 import "./contactForm.css";
 
-export default function ContactForm({ onSave, closePopup, colorMode}) {
+export default function ContactForm({ onSave, closePopup, colorMode }) {
   const [newContact, setNewContact] = useState({
     name: "",
     surname: "",
@@ -30,39 +30,49 @@ export default function ContactForm({ onSave, closePopup, colorMode}) {
     closePopup();
   };
 
-  const editContact = (e) => {
-    setNewContact({ ...newContact, [e.target.name]: e.target.value });
-  };
-
   return (
-    <div className="popup" style={colorMode === "light" ? lightText() : neonText()}>
+    <div
+      className="popup"
+      style={colorMode === "light" ? lightText() : neonText()}
+    >
       <form onSubmit={onFormSubmit}>
         <input
           type="text"
           placeholder="Please enter name"
           name="name"
           defaultValue={newContact.name}
-          onChange={editContact}
+          style={colorMode === "light" ? lightText() : neonText()}
+          className={colorMode === "light" ? "input" : "neonInput"}
         />
         <input
           type="text"
           placeholder="Please enter lastname"
           name="surname"
           defaultValue={newContact.surname}
-          onChange={editContact}
+          style={colorMode === "light" ? lightText() : neonText()}
+          className={colorMode === "light" ? "input" : "neonInput"}
         />
         <input
           type="text"
           placeholder="Please enter phone number"
           name="phone"
           defaultValue={newContact.phone}
-          onChange={editContact}
+          style={colorMode === "light" ? lightText() : neonText()}
+          className={colorMode === "light" ? "input" : "neonInput"}
         />
         <div className="options">
-          <button className="option save" style={colorMode === "light" ? lightButton() : neonButton()} onClick={onFormSubmit}>
+          <button
+            className="option save"
+            style={colorMode === "light" ? lightButton() : neonButton()}
+            onClick={onFormSubmit}
+          >
             Save
           </button>
-          <button className="option cancel" style={colorMode === "light" ? lightButton() : neonButton()} onClick={closePopup}>
+          <button
+            className="option cancel"
+            style={colorMode === "light" ? lightButton() : neonButton()}
+            onClick={closePopup}
+          >
             Cancel
           </button>
         </div>

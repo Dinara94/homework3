@@ -13,16 +13,15 @@ export function neonButton() {
 }
 
 export function lightText() {
-    return {
-      backgroundColor: "#fff",
-      color: "##FFB6C1",
-    };
-  }
+  return {
+    backgroundColor: "#fff",
+    color: "#671e92",
+  };
+}
 
-  export function lightButton() {
-    return {
-      backgroundColor: "##FFB6C1",
-      color: "#fff",
-    };
-  }
-
+export function lightButton() {
+  return {
+    backgroundColor: "#FFB6C1",
+    color: "#671e92",
+  };
+}

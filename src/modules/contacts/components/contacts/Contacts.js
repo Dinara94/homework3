@@ -6,6 +6,13 @@ import {
   deleteItem,
 } from "../../services/ContactsSevice";
 
+import {
+  neonText,
+  neonButton,
+  lightText,
+  lightButton,
+} from "../../services/Styles";
+
 import ThemeFilter from "../themeFilter/ThemeFilter";
 import ContactList from "../contactList/ContactList";
 import ContactForm from "../contactForm/ContactForm";
